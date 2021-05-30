@@ -11,5 +11,15 @@
     %header.navbar.navbar-expand-sm.navbar-light.bg-light
       .container
         = link_to "AwesomeEvents", root_path, class: "navbar-brand"
+        %ul.navbar-nav
+          %li.nav-item
+          - if logged_in?
+            = link_to "ログアウトする", "/logout", class: "nav-link", method: :delete
+          - else
+            = link_to "GitHubでログイン", "/auth/github", class: "nav-link", method: :post
+
     .container
+      - if flash.notice
+        .alert.alert-success
+          = flash.notice
       = yield
