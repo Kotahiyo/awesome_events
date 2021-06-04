@@ -13,6 +13,8 @@
         = link_to "AwesomeEvents", root_path, class: "navbar-brand"
         %ul.navbar-nav
           %li.nav-item
+            = link_to "イベントを作る", new_event_path, class: "nav-link"
+          %li.nav-item
           - if logged_in?
             = link_to "ログアウトする", "/logout", class: "nav-link", method: :delete
           - else
@@ -22,4 +24,7 @@
       - if flash.notice
         .alert.alert-success
           = flash.notice
+      - if flash.alert
+        .alert.alert-danger
+          = flash.alert
       = yield
